@@ -1,0 +1,29 @@
+* {
+   box-sizing: border-box;
+   margin:0px;
+   padding: 0px;
+}
+
+html {
+   background-image:url('background.png');
+}
+
+body {
+   background: rgb(40, 127, 184);  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to bottom, rgb(255, 255, 255), rgb(109, 213, 250), rgb(41, 128, 185));  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to bottom, rgb(255, 255, 255, 0.5), rgb(109, 213, 250, 0.6), rgb(41, 128, 185, 0.6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+   height:100vh;
+}
+
+#wrapper {
+
+}
+
+
+.container {
+
+
+}
+
+
+
