@@ -6,15 +6,6 @@
 
 const dataCtrl = (() =>{
    //Data objects will be needed here.
-   const roman = {
-      I : 1,
-      V : 5, 
-      X : 10,
-      L : 50, 
-      C : 100,
-      D : 500,
-      M : 1000
-   };
 
    //This may be better
 
@@ -22,10 +13,14 @@ const dataCtrl = (() =>{
    const standArr = [1, 5, 10, 50, 100, 500, 1000];
 
    return {
+      removeCommas : (input) => {
+         input = input.replace(',', "");
+         return input;
+      },
+
       //Determine type of conversion by reading input
       getType : (input) => {
          let type, romanRegEx, stanRegEx, letterRegEx;
-         console.log(input);
          romanRegEx = /^(?=[MDCLXVI])M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$/ig;
          stanRegEx = /[0-9]/g;
          letterRegEx = /[a-z]/gi;
@@ -64,13 +59,79 @@ const dataCtrl = (() =>{
 
       //Convert from Standard to Roman
       toRoman : (input) => {
-         //comma check
+
+         //TESTING
+         // input = '1994';
+         let length = input.length;
+         let result = "";
+         let placeValArr = [];
+
+         let multiplier = 1;
+         for (let i = length-1; i >= 0 ; i--){
+            placeValArr.unshift(input[i] * multiplier);
+            multiplier *= 10;
+         }
+         console.log(placeValArr);
+
+         //Thousands 
+         if (length === 4){
+            let thousands = placeValArr[0]/1000;
+            for (let i = 0; i < thousands; i++){
+               result += "M";
+            }
+         }
+
+         //Hundreds
+
+
+
+         //Tens
+
+
+
+         //ones
+
+         return result;
+
       },
 
       // Convert from Roman to Standard
       toStandard : (input) => {
          //make all the letters upper case, just in case.
-         // add in commas
+         let num = input.toUpperCase();
+         console.log(num);
+         let romanArray = [];
+         let integerArray = [];
+         const romanValues = {
+            I : 1,
+            V : 5,
+            X : 10,
+            L : 50,
+            C : 100,
+            D : 500,
+            M : 1000
+         };
+         
+         //Put the letters' values into the array
+         for (let i = 0; i < num.length; i++){
+            let key = num[i];
+            romanArray.push(romanValues[key]);
+         };
+      
+         //Iterate the number values for combo numbers (Ex: IV = 4);
+         for (let i = 0; i < romanArray.length; i++){
+            if (romanArray[i] < romanArray[i+1]){
+               integerArray.push(romanArray[i+1] - romanArray[i]);
+               i++;
+            } else {
+               integerArray.push(romanArray[i]);
+            }
+         }
+         
+         //Add them up. 
+         let result = integerArray.reduce((total, current) => total + current);
+         
+         return result;
       }
    }
 
@@ -101,14 +162,11 @@ const uiCtrl = (() => {
          return elements;
       }, 
 
+      //Get the input
       getInput : () => {
          return elements.input.value;
       }
 
-
-   //Get input
-      //return input
-   
    //Display results
 
       //Change inner text for result
@@ -118,7 +176,7 @@ const uiCtrl = (() => {
       //return
 
 
-   //Clear results
+   //Clear display
       //return
    };
 
@@ -127,7 +185,7 @@ const uiCtrl = (() => {
 // ************ CONTROLLER ***********
 
 const controller = ((data, ui) => {
-
+   let result;
    //Set up event listeners
    const eventListeners = () => {
       //Get DOM elements from UI
@@ -145,38 +203,40 @@ const controller = ((data, ui) => {
       
       //Get input from UI. 
       input = ui.getInput();
-      console.log(input);
+      console.log(`input: ${input}`);
 
       //Check input for commas and remove them
+      if (input.includes(',')){
+         input = data.removeCommas(input);
+      }
 
       //Check input for type
       type = data.getType(input);
-      console.log(type);
-      
-      
+      console.log(`type: ${type}`);
 
-};
-      
-      //Determine type of conversion -DATA 
-      //pass input
-      
-      //Make conversion - pass input and type
-      //If R to S call toStandard
-      //result =
-      //Else if S to R call toRoman
-      //result =
+
+      if (type === `StanToRom`){
+         //Convert a standard number to a roman number. 
+         result = data.toRoman(input);
+      }  else if (type === 'RomToStan'){
+         result = data.toStandard(input);
+      }
+
+      console.log(`input: ${input} | type: ${type} | result: ${result}`);
       
       //Display results - pass input and result
+      
+};
+      
 
-
-
+   
    return {
       init: () =>{
+         console.log('Initialization');
          //clear page and set up page
          //set selector to "selected"
          //Make select visible
          //Hide result
-         console.log('yeah that works');
          eventListeners();
       }
    }
