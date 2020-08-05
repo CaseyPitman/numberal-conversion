@@ -89,7 +89,7 @@ const dataCtrl = (() =>{
          if (!input){  
             //No input given
             alert(`You have to, you know, enter a number here bub. It can be Roman or Standard, but it's gotta be something. Come on. Get it together.`);
-            controller.init();
+            return 'error';
             
          } else if (stanRegEx.test(input) && input < 4000 && input > 0){  
             //Correctly formatted number of the proper amount.
@@ -98,12 +98,12 @@ const dataCtrl = (() =>{
          } else if (stanRegEx.test(input) && input >= 4000) { 
             //Too high a number
             alert ('Yeah, so that number is too high. Roman numerals are limited to numbers below 4000. Can you imagine a world where the highest number was 3999?');
-            controller.init();
-            
+            return 'error';
+
          } else if (stanRegEx.test(input) && input < 1){ 
             //Too low number
             alert(`Okay, so the Romans did't have a concept of zero, and certinaly no concept of negative numbers. Wild, eh? Does this mean there was no debt...?`)
-            controller.init();
+            return 'error';
             
          } else if (romanRegEx.test(input)){ 
             //Correctly formatted Roman numeral
@@ -111,13 +111,13 @@ const dataCtrl = (() =>{
 
          } else if(!romanRegEx.test(input) && letterRegEx.test(input)){ 
             //Letters but not a proper Roman numeral
-            alert(`You're killing me here, bub. I'm not sure what you entered, but it wasn't a Roman numeral and it wasn't a Standard numeral. You typed your name didn't you? Or maybe some naughty words. Grow up and try again.`);
-            controller.init();
+            alert(`You're killing me here, bub. I'm not sure what you entered, but it wasn't a proper Roman numeral and it wasn't a Standard numeral. You typed your name didn't you? Or maybe some naughty words. Grow up and try again.`);
+            return 'error';
 
          } else { 
             //Just plain screwed it up. Most likely a combination of letters and numbers.
             alert (`Okay, I'm not saying you are dumb or anything, but let's get it together. ONLY STANDARD NUMERALS OR ONLY ROMAN NUMERALS. Pick one for Pete's sake. And let's keep it to POSITIVE numbers less than 4000. Roman numerals can't go any higher. Okay...let's try this one more time.`)
-            controller.init();
+            return 'error';
          }
          return type;
       }, 
@@ -287,8 +287,12 @@ const controller = ((data, ui) => {
 
       //Check input for type
       type = data.getType(input);
+
       //Make conversion dependent on type determined.
-      if (type === `StanToRom`){
+      if (type === 'error'){
+         controller.init();
+         return;
+      } else if (type === `StanToRom`){
          //Convert a standard number to a roman number. 
          result = data.toRoman(input);
       }  else if (type === 'RomToStan'){
