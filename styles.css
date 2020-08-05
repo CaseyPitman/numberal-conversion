@@ -18,7 +18,7 @@ body {
    background: linear-gradient(to bottom, rgb(255, 255, 255, 0.5), rgb(109, 213, 250, 0.6), rgb(41, 128, 185, 0.6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    background-size: cover;
    height:100vh;
-   max-height: 100vh;
+   /* max-height: 100vh; */
 }
 
 #wrapper {
@@ -46,7 +46,7 @@ body {
    justify-content: center;
    align-items: center;
    flex-flow: row wrap;
-   margin:150px auto;
+   margin:40% auto 0;
    width: 90%;
 }
 
@@ -117,3 +117,71 @@ body {
 
 
 
+/* MEDIA QUERIES */
+
+/* MOBILE LANDSCAPE */
+@media only screen
+  and (max-device-width: 823px)
+  and (orientation: landscape){
+
+      #container {
+         position: relative;
+         top: 10px;
+      }
+
+      #input-content, 
+      #result-content {
+         display:flex;
+         justify-content: center;
+         align-items: center;
+         flex-flow: row wrap;
+         margin:60px auto 0;
+         width: 100%;
+      }
+
+      #inline-btn {
+         display:flex;
+         justify-content: center;
+         align-items: center;
+         flex-flow: row nowrap;
+         width:40%;
+      }
+
+
+}
+
+/* OLD IPHONES */
+
+@media only screen
+   and (min-device-width: 320px)
+   and (max-device-height: 568px)
+   and (orientation: portrait){
+
+   #headline{
+   font-size: 3.2rem;
+   } 
+
+   #input-content, 
+   #result-content {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: row wrap;
+      margin:30px auto 0;
+      width: 100%;
+   }
+
+}
+
+
+/* #headline{
+   color: red;
+} */
+
+/* TABLETS */
+
+
+/* LARGER TABLET */
+
+
+/* DESKTOP/LAPTOP */
