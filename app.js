@@ -11,7 +11,6 @@ const dataCtrl = (() =>{
    //Determing Roman for thousands place.
    const romanThousands = (num) =>{
       const thousands = {
-         0 : '',
          1 : 'M',
          2 : 'MM',
          3 : 'MMM'
@@ -22,7 +21,6 @@ const dataCtrl = (() =>{
    //Determing Roman for hundreds place.
    const romanHundreds = (num) =>{
       const hundreds = {
-         0 : '',
          1 : 'C',
          2 : 'CC',
          3 : 'CCC',
@@ -39,7 +37,6 @@ const dataCtrl = (() =>{
    //Determing Roman for tens place.
    const romanTens = (num) =>{
       const tens = {
-         0 : '',
          1 : 'X',
          2 : 'XX',
          3 : 'XXX',
@@ -56,7 +53,6 @@ const dataCtrl = (() =>{
    //Determing Roman for ones place.
    const romanOnes = (num) =>{
       const ones = {
-         0 : '',
          1 : 'I',
          2 : 'II',
          3 : 'III',
