@@ -3,25 +3,33 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="A web app to convert Roman numerals to standard numbers and standard numbers to Roman numerals.">
    <title>Roman Numeral Converter</title>
    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
    <div id="wrapper">
-      <h1>Roman Numeral Converter</h1>
+      <div id="container">
+         <h1 id = "headline">Roman Numeral Converter</h1>
 
-      <!-- DISPLAY BLOCK ON INIT,  NONE ON CLICK FOR RESULT -->
-      <div class = "container" id="input-display">
-         <label for = "input">Enter a Roman or Standard Number</label>
-         <input type="text" name = "input" id="input" value = "" placeholder = 'Enter a number'>
-         <button id="convert-btn" class="btn">Convert</button>
+         <!-- DISPLAY BLOCK ON INIT,  NONE ON CLICK FOR RESULT -->
+         <div id="input-display">
+            <div id="input-content">
+               <label for = "input">Enter a Roman numeral or a standard number</label>
+               <input type="text" name = "input" id="input" value = "" placeholder = 'Enter a number'>
+               <button id="convert-btn" class="btn">Convert</button>
+            </div>
+         </div>
+
+         <!-- DISPLAY NONE ON INIT,  BLOCK ON CLICK FOR RESULT -->
+         <div id="result-display">
+            <div id="result-content">
+               <p id="result">Result goes here</p>
+               <button id="reset-btn" class="btn">Make another conversion</button>
+            </div>
+         </div>
+
       </div>
-      <!-- DISPLAY NONE ON INIT,  BLOCK ON CLICK FOR RESULT -->
-      <div class = "container" id="result-display">
-         <p id="result">Result goes here</p>
-         <button id="reset-btn" class="btn">Make another conversion</button>
-      </div>
-   </div>
    
    <footer id = "footer">
       <h4 id="copyright">&copy;&nbsp;2020 | Casey Pitman</h4>

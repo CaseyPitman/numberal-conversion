@@ -249,9 +249,11 @@ const uiCtrl = (() => {
          elements.start.style.display = 'block';
          //Hide result section
          elements.resultDisp.style.display = 'none';
+         //Clear input field
+         input : document.getElementById('input').value = "";
+
       }
    };
-
 })();
 
 // ************ CONTROLLER ***********
