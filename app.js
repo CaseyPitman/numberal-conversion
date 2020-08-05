@@ -99,7 +99,7 @@ const dataCtrl = (() =>{
             //Too high a number
             alert ('Yeah, so that number is too high. Roman numerals are limited to numbers below 4000. Can you imagine a world where the highest number was 3999?');
             controller.init();
-
+            
          } else if (stanRegEx.test(input) && input < 1){ 
             //Too low number
             alert(`Okay, so the Romans did't have a concept of zero, and certinaly no concept of negative numbers. Wild, eh? Does this mean there was no debt...?`)
@@ -218,7 +218,8 @@ const uiCtrl = (() => {
       input : document.getElementById('input'),
       convertBtn : document.getElementById('convert-btn'),
       resetBtn : document.getElementById('reset-btn'),
-      result : document.getElementById('result-display'),
+      resultDisp : document.getElementById('result-display'),
+      resultTxt: document.getElementById('result'),
       start : document.getElementById('input-display')
    };
 
@@ -231,19 +232,24 @@ const uiCtrl = (() => {
       //Get the input
       getInput : () => {
          return elements.input.value;
+      }, 
+
+      //Display results
+      displayResult: (input, result) => {
+         //Set text result
+         elements.resultTxt.innerText = `${input} is written as ${result}.`
+         //Hide main display
+         elements.start.style.display = 'none';
+         //Show the result
+         elements.resultDisp.style.display = 'block';
+      },
+
+      clearDisplay : () => {
+         //Show main display
+         elements.start.style.display = 'block';
+         //Hide result section
+         elements.resultDisp.style.display = 'none';
       }
-
-   //Display results
-
-      //Change inner text for result
-      //Display none main page
-      //Display block result
-
-      //return
-
-
-   //Clear display
-      //return
    };
 
 })();
@@ -262,6 +268,10 @@ const controller = ((data, ui) => {
          if (event.key === "Enter" || event.keyCode === 13) {
              convert();
          }});
+
+      //Reset the page
+      el.resetBtn.addEventListener('click', controller.init);
+         
    };
    
    const convert = () =>{
@@ -287,18 +297,19 @@ const controller = ((data, ui) => {
 
       console.log(`input: ${input} | type: ${type} | result: ${result}`);
       
-      //Display results - pass input and result
+      //Display results
+      ui.displayResult(input, result);
       
 };
       
    return {
       init: () => {
          console.log('Initialization');
-         //ui.clear
-
+         //Set up starting display
+         ui.clearDisplay();
          eventListeners();
       }
-   }
+   };
 
 })(dataCtrl, uiCtrl);
 
