@@ -23,7 +23,7 @@ body {
 
 #wrapper {
    margin: auto;
-   width:90%;
+   
 }
 
 #headline {
@@ -84,7 +84,7 @@ body {
    padding: 0 5px;
    border:none;
    border-radius: 0px;
-   background: rgb(44, 44, 44, 0.60);
+   background: rgb(44, 44, 44, 0.50);
    color: rgb(245, 245, 245);
    font-family: 'Lora', serif;
    font-size:2rem
@@ -100,19 +100,17 @@ body {
    color: rgb(245, 245, 245);
 }
 
-
 #footer {
-
    position:fixed;
    bottom: 11px;
-   margin: 0 auto;
-   text-align:center;
-   width: 100%;
+   width:100%;
 }
 
 #copyright {
    font-size: 2rem;
    font-weight: 600;
+   text-align:center;
+   width:100%;
 }
 
 
@@ -131,10 +129,10 @@ body {
 
       #input-content, 
       #result-content {
-         display:flex;
+         /* display:flex;
          justify-content: center;
          align-items: center;
-         flex-flow: row wrap;
+         flex-flow: row wrap; */
          margin:60px auto 0;
          width: 100%;
       }
@@ -150,8 +148,8 @@ body {
 
 }
 
-/* OLD IPHONES */
 
+/* OLD IPHONES */
 @media only screen
    and (min-device-width: 320px)
    and (max-device-height: 568px)
@@ -170,18 +168,71 @@ body {
       margin:30px auto 0;
       width: 100%;
    }
-
 }
 
 
-/* #headline{
-   color: red;
-} */
-
 /* TABLETS */
+@media only screen 
+and (min-device-width: 768px) {
+   
+   #container {
+      top:200px;
+   }
+   
+   #headline{
+      font-size: 5rem;
+   }
+
+   #label,
+   #result {
+      font-size:3.6rem;
+   }
+
+   #input-content, 
+   #result-content {
+      margin:150px auto 0;
+      width: 66%;
+   }
+
+   #input,
+   .btn {
+      font-size: 2.6rem;
+   }
+
+   #inline-btn {
+      margin: 20px auto 0;
+      width: 330px;
+   }
+
+   #copyright {
+      font-size:2.4rem;
+   }
+}
 
 
-/* LARGER TABLET */
+/* IPAD PRO */
 
+@media only screen
+  and (min-device-width: 1024px)
+  and (max-device-width: 1366px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
 
-/* DESKTOP/LAPTOP */
+  #headline {
+     font-size:6rem;
+   }
+
+   #container {
+      top: 330px;
+   }
+   #label,
+   #result {
+      font-size:4rem;
+      width: 100%;
+   }
+
+   #input,
+   .btn {
+      font-size: 3rem;
+   }
+}

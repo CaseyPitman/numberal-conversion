@@ -45,7 +45,7 @@ const dataCtrl = (() =>{
          6 : 'LX',
          7 : 'LXX',
          8 : 'LXXX',
-         9 : 'CX'
+         9 : 'XC'
       }
       return tens[num];
    };
@@ -61,7 +61,7 @@ const dataCtrl = (() =>{
          6 : 'VI',
          7 : 'VII',
          8 : 'VIII',
-         9 : 'XI'
+         9 : 'IX'
       };
       return ones[num];
    };
