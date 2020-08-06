@@ -2,8 +2,6 @@
 
 // ************ DATA ***********
 
-//LIMIT TO LESS THAN 4000!
-
 const dataCtrl = (() =>{
 
    //HELPER FUNCTIONS FOR CONVERTING STANDARD NUMBERS TO ROMAN
@@ -96,7 +94,7 @@ const dataCtrl = (() =>{
             type = 'StanToRom';
             
          } else if (stanRegEx.test(input) && input >= 4000) { 
-            //Too high a number
+            //Too high number
             alert ('Yeah, so that number is too high. Roman numerals are limited to numbers below 4000. Can you imagine a world where the highest number was 3999?');
             return 'error';
 
@@ -135,7 +133,6 @@ const dataCtrl = (() =>{
             values.unshift(input[i] * multiplier);
             multiplier *= 10;
          }
-         //Convert each place value.
 
          //Thousands place
          if (values[0] >= 1000){
@@ -171,7 +168,7 @@ const dataCtrl = (() =>{
 
       // Convert from Roman to Standard
       toStandard : (input) => {
-         //make all the letters upper case, just in case.
+         //Ensure all the letters upper case.
          let num = input.toUpperCase();
          let romanArray = [];
          let integerArray = [];
@@ -251,7 +248,6 @@ const uiCtrl = (() => {
          elements.resultDisp.style.display = 'none';
          //Clear input field
          input : document.getElementById('input').value = "";
-
       }
    };
 })();
@@ -273,7 +269,6 @@ const controller = ((data, ui) => {
 
       //Reset the page
       el.resetBtn.addEventListener('click', controller.init);
-         
    };
    
    const convert = () =>{
@@ -300,17 +295,13 @@ const controller = ((data, ui) => {
       }  else if (type === 'RomToStan'){
          result = data.toStandard(input);
       }
-
-      console.log(`input: ${input} | type: ${type} | result: ${result}`);
       
       //Display results
       ui.displayResult(input, result);
-      
 };
       
    return {
       init: () => {
-         console.log('Initialization');
          //Set up starting display
          ui.clearDisplay();
          eventListeners();
